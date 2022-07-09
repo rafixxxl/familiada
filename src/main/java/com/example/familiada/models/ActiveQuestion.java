@@ -7,7 +7,7 @@ public class ActiveQuestion {
     int question_no;
     int no_of_guessed;
     int sum;
-    boolean[] guessed;
+    public boolean[] guessed;
 
     int incorrect_answers;
     int[] mult_coeffs = new int[] {1, 1, 1, 2, 3, 3, 3, 3};
