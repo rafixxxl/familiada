@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" pickOnBounds="false" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.familiada.FirstStageController">
@@ -102,6 +103,24 @@
          </font>
       </TextArea>
       <TextArea fx:id="total_points" editable="false" layoutX="1462.0" layoutY="920.0" prefHeight="110.0" prefWidth="103.0" text="0">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </TextArea>
+      <Ellipse fx:id="lbad1" fill="#222222" layoutX="108.0" layoutY="210.0" onMouseClicked="#SmallBadLeft1" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="lbad2" fill="#222222" layoutX="108.0" layoutY="495.0" onMouseClicked="#SmallBadLeft2" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="lbad3" fill="#222222" layoutX="108.0" layoutY="775.0" onMouseClicked="#SmallBadLeft3" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="rbad1" fill="#222222" layoutX="1762.0" layoutY="207.0" onMouseClicked="#SmallBadRight1" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="rbad2" fill="#222222" layoutX="1770.0" layoutY="470.0" onMouseClicked="#SmallBadRight2" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="rbad3" fill="#222222" layoutX="1766.0" layoutY="739.0" onMouseClicked="#SmallBadRight3" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="lbigbad" fill="#222222" layoutX="110.0" layoutY="474.0" onMouseClicked="#BigBadLeft" radiusX="40.0" radiusY="321.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="rbigbad" fill="#222222" layoutX="1765.0" layoutY="466.0" onMouseClicked="#BigBadRight" radiusX="41.0" radiusY="321.0" stroke="BLACK" strokeType="INSIDE" />
+      <TextArea fx:id="total_points1" editable="false" layoutX="23.0" layoutY="915.0" prefHeight="110.0" prefWidth="103.0" promptText="left_points" text="0">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </TextArea>
+      <TextArea fx:id="total_points2" editable="false" layoutX="1726.0" layoutY="918.0" prefHeight="110.0" prefWidth="103.0" promptText="right_points" text="0">
          <font>
             <Font name="Familiada Regular" size="49.0" />
          </font>

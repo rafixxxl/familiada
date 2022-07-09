@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Shape;
 
 import javax.sound.sampled.*;
 import java.io.IOException;
@@ -22,6 +24,8 @@ public class FirstStageController {
     public TextArea answer5, points5;
     public TextArea answer6, points6;
     public TextArea total_points;
+
+    public Shape lbad1, lbad2, lbad3, lbigbad, rbad1, rbad2, rbad3, rbigbad;
 
     @FXML
     public void GoToNextRound() {
@@ -107,6 +111,54 @@ public class FirstStageController {
         GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
         total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
         playSound("correct.wav");
+    }
+
+    @FXML
+    public void BigBadLeft() {
+        playSound("incorrect.wav");
+        lbigbad.setFill(Paint.valueOf("FFFF00"));
+    }
+
+    @FXML
+    public void SmallBadLeft1() {
+        playSound("incorrect.wav");
+        lbad1.setFill(Paint.valueOf("FFFF00"));
+    }
+
+    @FXML
+    public void SmallBadLeft2() {
+        playSound("incorrect.wav");
+        lbad2.setFill(Paint.valueOf("FFFF00"));
+    }
+
+    @FXML
+    public void SmallBadLeft3() {
+        playSound("incorrect.wav");
+        lbad3.setFill(Paint.valueOf("FFFF00"));
+    }
+
+    @FXML
+    public void BigBadRight() {
+        playSound("incorrect.wav");
+        rbigbad.setFill(Paint.valueOf("FFFF00"));
+    }
+
+    @FXML
+    public void SmallBadRight1() {
+        playSound("incorrect.wav");
+        rbad1.setFill(Paint.valueOf("FFFF00"));
+    }
+
+    @FXML
+    public void SmallBadRight2() {
+        playSound("incorrect.wav");
+        rbad2.setFill(Paint.valueOf("FFFF00"));
+    }
+
+    @FXML
+    public void SmallBadRight3() {
+        playSound("incorrect.wav");
+        rbad3.setFill(Paint.valueOf("FFFF00"));
     }
 
     @FXML
