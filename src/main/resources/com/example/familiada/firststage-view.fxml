@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" pickOnBounds="false" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.familiada.FirstStageController">
    <children>
-      <Button fx:id="next_round_button" layoutX="725.0" layoutY="942.0" mnemonicParsing="false" onAction="#GoToNextRound" prefHeight="64.0" prefWidth="202.0" text="Next round">
+      <Button fx:id="right_wins" layoutX="597.0" layoutY="943.0" mnemonicParsing="false" onAction="#GoToNextRoundRight" prefHeight="64.0" prefWidth="202.0" text="&lt;">
          <font>
             <Font name="Familiada Regular" size="13.0" />
          </font>
@@ -125,5 +125,15 @@
             <Font name="Familiada Regular" size="49.0" />
          </font>
       </TextArea>
+      <Button fx:id="left_wins" layoutX="375.0" layoutY="943.0" mnemonicParsing="false" onAction="#GoToNextRoundLeft" prefHeight="64.0" prefWidth="202.0" text="&gt;">
+         <font>
+            <Font name="Familiada Regular" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="next_round" layoutX="814.0" layoutY="943.0" mnemonicParsing="false" onAction="#GoToNextRound" prefHeight="64.0" prefWidth="202.0" text="NEXT ROUND">
+         <font>
+            <Font name="Familiada Regular" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

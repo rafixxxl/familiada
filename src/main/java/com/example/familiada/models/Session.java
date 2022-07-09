@@ -28,4 +28,8 @@ public class Session {
         }
         questions.add(new Question(question, number_of_answers, a));
     }
+
+    public void addPoints(int team, int x) {
+        points[team - 1] += x;
+    }
 }

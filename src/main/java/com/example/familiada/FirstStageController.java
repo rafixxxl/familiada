@@ -1,14 +1,21 @@
 package com.example.familiada;
 
+import com.example.familiada.models.ActiveQuestion;
 import com.example.familiada.models.Answer;
 import com.example.familiada.models.GlobalVar;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
+import javafx.stage.Stage;
 
 import javax.sound.sampled.*;
 import java.io.IOException;
@@ -16,7 +23,11 @@ import java.io.InputStream;
 
 public class FirstStageController {
 
-    public Button next_round_button;
+    @FXML
+    Stage stage;
+    @FXML
+    Parent root;
+
     public TextArea answer1, points1;
     public TextArea answer2, points2;
     public TextArea answer3, points3;
@@ -26,11 +37,8 @@ public class FirstStageController {
     public TextArea total_points;
 
     public Shape lbad1, lbad2, lbad3, lbigbad, rbad1, rbad2, rbad3, rbigbad;
-
-    @FXML
-    public void GoToNextRound() {
-        System.out.println("New round!");
-    }
+    public TextArea total_points1, total_points2;
+    public Button left_wins, right_wins;
 
     @FXML
     public void RevealFirstAnswer() {
@@ -179,8 +187,36 @@ public class FirstStageController {
         }
     }
 
-    private void playSound(String name) {
-        InputStream is = getClass().getClassLoader().getResourceAsStream(name);
+
+    @FXML
+    public void GoToNextRoundLeft() {
+        System.out.println("Left wins!");
+        GlobalVar.current_session.addPoints(1, GlobalVar.current_active_question.getSum());
+        total_points1.setText(Integer.toString(GlobalVar.current_session.getPoints(1)));
+    }
+
+    @FXML
+    public void GoToNextRoundRight() {
+        System.out.println("Right wins!");
+        GlobalVar.current_session.addPoints(2, GlobalVar.current_active_question.getSum());
+        total_points2.setText(Integer.toString(GlobalVar.current_session.getPoints(2)));
+    }
+
+    @FXML
+    private void GoToNextRound(ActionEvent event) throws IOException {
+        System.out.println("New round!");
+        GlobalVar.current_active_question = new ActiveQuestion(GlobalVar.current_session.getQuestions().get(GlobalVar.current_round),
+                GlobalVar.current_session, GlobalVar.current_round + 1);
+        GlobalVar.current_round++;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("firststage-view.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public static void playSound(String name) {
+        InputStream is = FirstStageController.class.getClassLoader().getResourceAsStream(name);
         try {
             assert is != null;
             AudioInputStream ais = AudioSystem.getAudioInputStream(is);

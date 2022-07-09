@@ -10,30 +10,30 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class FirstStageApplication extends Application {
 
-    String[] numerals = new String[] {"pierwsza", "druga", "trzecia", "czwarta", "piąta", "szósta", "siódma"};
+    String[] numerals = new String[] {"pierwsza", "druga", "trzecia", "czwarta", "piąta", "szósta", "siódma", "ósma"};
 
     @Override
     public void start(Stage stage) throws IOException {
+        GlobalVar.current_active_question = new ActiveQuestion(GlobalVar.current_session.getQuestions().get(0), GlobalVar.current_session, GlobalVar.current_round - 1);
+        Question q = GlobalVar.current_active_question.getQuestion();
 
-        GlobalVar.current_session = new Session();
-        addQuestions(GlobalVar.current_session);
-
-        for (Question q : GlobalVar.current_session.getQuestions()) {
-            GlobalVar.current_active_question = new ActiveQuestion(q, GlobalVar.current_session, GlobalVar.current_round);
-            FXMLLoader fxmlLoader = new FXMLLoader(FirstStageApplication.class.getResource("firststage-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
-            stage.setTitle("Runda " + numerals[GlobalVar.current_round - 1]);
-            stage.setScene(scene);
-            stage.show();
-        }
-
+        System.out.println("this question has " + q.getNumber_of_answers() + " answers.");
+        GlobalVar.current_active_question = new ActiveQuestion(q, GlobalVar.current_session, GlobalVar.current_round);
+        FXMLLoader fxmlLoader = new FXMLLoader(FirstStageApplication.class.getResource("firststage-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
+        stage.setTitle("Runda " + numerals[GlobalVar.current_round - 1]);
+        stage.setScene(scene);
+        stage.show();
+        FirstStageController.playSound("start_round.wav");
     }
 
     public static void main(String[] args) {
+        GlobalVar.current_session = new Session();
+        addQuestions(GlobalVar.current_session);
+
         launch();
     }
 
@@ -51,29 +51,7 @@ public class FirstStageApplication extends Application {
                 new int[] {25, 25, 25, 25, 0});
 
         s.addQuestion("Co jest w cieście na stole",
-                new String[] {"Czekolada", "Ziemniaki", "Kuskus", "Jajka", "Papryka słodka"},
-                new int[] {25, 25, 25, 20, 5});
-    }
-
-    static void handleAnswer(int number, int team, ActiveQuestion activeQuestion) {
-        if (number == 0) {
-            activeQuestion.guessWrong(team);
-            System.out.println("Team " + team + " has just guessed incorrectly.");
-        }
-        else {
-            activeQuestion.guessOne(number, team);
-            System.out.println("Team " + team + " has just guessed no. " + number + " and the sum is now " + activeQuestion.getSum());
-        }
-    }
-
-    static void lastQuestion(ActiveQuestion activeQuestion) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Last question: which team guesses?");
-        int team = scanner.nextInt();
-        System.out.println("Answer:");
-        int number = scanner.nextInt();
-        handleAnswer(number, team, activeQuestion);
-        if (number != 0) activeQuestion.end(team);
-        else activeQuestion.end(3 - team);
+                new String[] {"Czekolada", "Ziemniaki", "Kuskus"},
+                new int[] {28, 26, 25});
     }
 }

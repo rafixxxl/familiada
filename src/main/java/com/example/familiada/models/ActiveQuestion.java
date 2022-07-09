@@ -2,6 +2,10 @@ package com.example.familiada.models;
 
 public class ActiveQuestion {
 
+    public Question getQuestion() {
+        return question;
+    }
+
     Question question;
     Session session;
     int question_no;
