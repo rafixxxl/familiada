@@ -13,4 +13,12 @@ public class Question {
     String question;
     int number_of_answers;
     LinkedList<Answer> answers;
+
+    public LinkedList<Answer> getAnswers() {
+        return answers;
+    }
+
+    public int getNumber_of_answers() {
+        return number_of_answers;
+    }
 }

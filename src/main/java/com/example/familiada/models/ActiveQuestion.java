@@ -40,6 +40,10 @@ public class ActiveQuestion {
         no_of_guessed++;
     }
 
+    public void addToSum(int x) {
+        sum += x;
+    }
+
     public void guessWrong(int team) {
         incorrect_answers++;
     }

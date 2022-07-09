@@ -8,4 +8,12 @@ public class Answer {
         this.answer = answer;
         this.points = points;
     }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public int getPoints() {
+        return points;
+    }
 }
