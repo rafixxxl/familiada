@@ -13,10 +13,9 @@ import java.io.IOException;
 
 public class FirstStageApplication extends Application {
 
-    String[] numerals = new String[] {"pierwsza", "druga", "trzecia", "czwarta", "piąta", "szósta", "siódma", "ósma"};
-
     @Override
     public void start(Stage stage) throws IOException {
+        GlobalVar.mainStage = stage;
         GlobalVar.current_active_question = new ActiveQuestion(GlobalVar.current_session.getQuestions().get(0), GlobalVar.current_session, GlobalVar.current_round - 1);
         Question q = GlobalVar.current_active_question.getQuestion();
 
@@ -24,10 +23,10 @@ public class FirstStageApplication extends Application {
         GlobalVar.current_active_question = new ActiveQuestion(q, GlobalVar.current_session, GlobalVar.current_round);
         FXMLLoader fxmlLoader = new FXMLLoader(FirstStageApplication.class.getResource("firststage-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
-        stage.setTitle("Runda " + numerals[GlobalVar.current_round - 1]);
+        System.out.println("jest runda " + GlobalVar.current_round);
+        stage.setTitle("Runda pierwsza");
         stage.setScene(scene);
         stage.show();
-        FirstStageController.playSound("start_round.wav");
     }
 
     public static void main(String[] args) {
@@ -38,20 +37,24 @@ public class FirstStageApplication extends Application {
     }
 
     static void addQuestions(Session s) {
-        s.addQuestion("Wielcy Polacy",
-                new String[] {"Karol Wojtyła", "Mariusz Pudzianowski", "Adam Małysz", "Robert Kubica", "Norbi"},
-                new int[] {23, 20, 15, 14, 10});
+        s.addQuestion("Najpopularniejsze telefony Polaków w 2022",
+                new String[] {"SAMSUNG", "XIAOMI", "REALME", "APPLE", "LENOVO/MOTOROLA"},
+                new int[] {31, 25, 13, 10, 6});
 
-        s.addQuestion("Więcej niż jedno zwierzę to",
-                new String[] {"Lama", "Owca", "Fusion Suszec", "TCS", "Feministki"},
-                new int[] {25, 24, 22, 20, 7});
+        s.addQuestion("Najbardziej obserwowane osoby na Instagramie",
+                new String[] {"@CRISTIANO", "@KYLIEJENNER", "@LEOMESSI", "@SELENAGOMEZ", "@THEROCK", "@KIMKARDASHIAN"},
+                new int[] {26, 22, 18, 14, 10, 6});
 
-        s.addQuestion("Smaki lodów Iza",
-                new String[] {"Truskawkowe", "Śmietankowe", "Cytrynowe", "Czekoladowe", "Innych nie ma"},
-                new int[] {25, 25, 25, 25, 0});
+        s.addQuestion("Zwierzęta hodowlane, których jest najwięcej",
+                new String[] {"KURCZAKI", "BYDŁO", "OWCE", "KACZKI", "KOZY", "TRZODA CHLEWNA"},
+                new int[] {26, 22, 18, 14, 10, 6});
 
-        s.addQuestion("Co jest w cieście na stole",
-                new String[] {"Czekolada", "Ziemniaki", "Kuskus"},
-                new int[] {28, 26, 25});
+        s.addQuestion("Najczęstsze nazwiska Polaków",
+                new String[] {"NOWAK", "KOWALSK*", "WIŚNIEWSK*"},
+                new int[] {32, 30, 25});
+
+        s.addQuestion("Największe sieci sklepów spożywczych w Polsce",
+                new String[] {"ABC", "ŻABKA", "LEWIATAN", "BIEDRONKA"},
+                new int[] {28, 26, 25, 18});
     }
 }
