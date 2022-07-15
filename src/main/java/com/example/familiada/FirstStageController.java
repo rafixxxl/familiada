@@ -13,8 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.sound.sampled.*;
@@ -28,12 +28,9 @@ public class FirstStageController {
     @FXML
     Parent root;
 
-    public TextArea answer1, points1, number1;
-    public TextArea answer2, points2, number2;
-    public TextArea answer3, points3, number3;
-    public TextArea answer4, points4, number4;
-    public TextArea answer5, points5, number5;
-    public TextArea answer6, points6, number6;
+    public Text ans1, ans2, ans3, ans4, ans5, ans6;
+    public Text no1, no2, no3, no4, no5, no6;
+    public Text pts1, pts2, pts3, pts4, pts5, pts6;
     public TextArea total_points;
 
     public Shape lbad1, lbad2, lbad3, lbigbad, rbad1, rbad2, rbad3, rbigbad;
@@ -47,7 +44,8 @@ public class FirstStageController {
 
     @FXML
     public void initialize() {
-        playSound("start_round.wav");
+        if (GlobalVar.current_round != 1) playSound("start_round.wav");
+        // else playSound("intro.wav"); // odkomentuj jak cie przestanie wkurzac
         end_of_round_pressed = false;
         lbad1_pressed = lbad2_pressed = lbad3_pressed = lbigbad_pressed = false;
         rbad1_pressed = rbad2_pressed = rbad3_pressed = rbigbad_pressed = false;
@@ -57,25 +55,33 @@ public class FirstStageController {
 
         // hiding unnecessary elements
         if (GlobalVar.current_active_question.getQuestion().getNumber_of_answers() < 6) {
-            answer6.setVisible(false);
-            points6.setVisible(false);
-            number6.setVisible(false);
+            ans6.setVisible(false);
+            pts6.setVisible(false);
+            no6.setVisible(false);
         }
         if (GlobalVar.current_active_question.getQuestion().getNumber_of_answers() < 5) {
-            answer5.setVisible(false);
-            points5.setVisible(false);
-            number5.setVisible(false);
+            ans5.setVisible(false);
+            pts5.setVisible(false);
+            no5.setVisible(false);
         }
         if (GlobalVar.current_active_question.getQuestion().getNumber_of_answers() < 4) {
-            answer4.setVisible(false);
-            points4.setVisible(false);
-            number4.setVisible(false);
+            ans4.setVisible(false);
+            pts4.setVisible(false);
+            no4.setVisible(false);
         }
         if (GlobalVar.current_active_question.getQuestion().getNumber_of_answers() < 3) {
-            answer3.setVisible(false);
-            points3.setVisible(false);
-            number3.setVisible(false);
+            ans3.setVisible(false);
+            pts3.setVisible(false);
+            no3.setVisible(false);
         }
+        lbigbad.setVisible(false);
+        lbad1.setVisible(false);
+        lbad2.setVisible(false);
+        lbad3.setVisible(false);
+        rbigbad.setVisible(false);
+        rbad1.setVisible(false);
+        rbad2.setVisible(false);
+        rbad3.setVisible(false);
     }
 
     @FXML
@@ -84,8 +90,8 @@ public class FirstStageController {
         GlobalVar.current_active_question.guessed[0] = true;
         System.out.println("Revealing first answer");
         Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(0);
-        answer1.setText(guessed_answer.getAnswer());
-        points1.setText(Integer.toString(guessed_answer.getPoints()));
+        ans1.setText(guessed_answer.getAnswer());
+        pts1.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
             total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
@@ -99,8 +105,8 @@ public class FirstStageController {
         GlobalVar.current_active_question.guessed[1] = true;
         System.out.println("Revealing second answer");
         Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(1);
-        answer2.setText(guessed_answer.getAnswer());
-        points2.setText(Integer.toString(guessed_answer.getPoints()));
+        ans2.setText(guessed_answer.getAnswer());
+        pts2.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
             total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
@@ -114,8 +120,8 @@ public class FirstStageController {
         GlobalVar.current_active_question.guessed[2] = true;
         System.out.println("Revealing third answer");
         Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(2);
-        answer3.setText(guessed_answer.getAnswer());
-        points3.setText(Integer.toString(guessed_answer.getPoints()));
+        ans3.setText(guessed_answer.getAnswer());
+        pts3.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
             total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
@@ -130,8 +136,8 @@ public class FirstStageController {
         GlobalVar.current_active_question.guessed[3] = true;
         System.out.println("Revealing fourth answer");
         Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(3);
-        answer4.setText(guessed_answer.getAnswer());
-        points4.setText(Integer.toString(guessed_answer.getPoints()));
+        ans4.setText(guessed_answer.getAnswer());
+        pts4.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
             total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
@@ -146,8 +152,8 @@ public class FirstStageController {
         GlobalVar.current_active_question.guessed[4] = true;
         System.out.println("Revealing fifth answer");
         Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(4);
-        answer5.setText(guessed_answer.getAnswer());
-        points5.setText(Integer.toString(guessed_answer.getPoints()));
+        ans5.setText(guessed_answer.getAnswer());
+        pts5.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
             total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
@@ -162,8 +168,8 @@ public class FirstStageController {
         GlobalVar.current_active_question.guessed[5] = true;
         System.out.println("Revealing sixth answer");
         Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(5);
-        answer6.setText(guessed_answer.getAnswer());
-        points6.setText(Integer.toString(guessed_answer.getPoints()));
+        ans6.setText(guessed_answer.getAnswer());
+        pts6.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
             total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
@@ -175,10 +181,10 @@ public class FirstStageController {
     public void BigBadLeft() {
         if (!lbigbad_pressed) {
             playSound("incorrect.wav");
-            lbigbad.setFill(Paint.valueOf("FFFF00"));
+            lbigbad.setVisible(true);
             lbigbad_pressed = true;
         } else {
-            lbigbad.setFill(Paint.valueOf("111111"));
+            lbigbad.setVisible(false);
             lbigbad_pressed = false;
         }
     }
@@ -187,10 +193,10 @@ public class FirstStageController {
     public void SmallBadLeft1() {
         if (!lbad1_pressed) {
             playSound("incorrect.wav");
-            lbad1.setFill(Paint.valueOf("FFFF00"));
+            lbad1.setVisible(true);
             lbad1_pressed = true;
         } else {
-            lbad1.setFill(Paint.valueOf("111111"));
+            lbad1.setVisible(false);
             lbad1_pressed = false;
         }
     }
@@ -199,10 +205,10 @@ public class FirstStageController {
     public void SmallBadLeft2() {
         if (!lbad2_pressed) {
             playSound("incorrect.wav");
-            lbad2.setFill(Paint.valueOf("FFFF00"));
+            lbad2.setVisible(true);
             lbad2_pressed = true;
         } else {
-            lbad2.setFill(Paint.valueOf("111111"));
+            lbad2.setVisible(false);
             lbad2_pressed = false;
         }
     }
@@ -211,10 +217,10 @@ public class FirstStageController {
     public void SmallBadLeft3() {
         if (!lbad3_pressed) {
             playSound("incorrect.wav");
-            lbad3.setFill(Paint.valueOf("FFFF00"));
+            lbad3.setVisible(true);
             lbad3_pressed = true;
         } else {
-            lbad3.setFill(Paint.valueOf("111111"));
+            lbad3.setVisible(false);
             lbad3_pressed = false;
         }
     }
@@ -223,10 +229,10 @@ public class FirstStageController {
     public void BigBadRight() {
         if (!rbigbad_pressed) {
             playSound("incorrect.wav");
-            rbigbad.setFill(Paint.valueOf("FFFF00"));
+            rbigbad.setVisible(true);
             rbigbad_pressed = true;
         } else {
-            rbigbad.setFill(Paint.valueOf("111111"));
+            rbigbad.setVisible(false);
             rbigbad_pressed = false;
         }
     }
@@ -235,10 +241,10 @@ public class FirstStageController {
     public void SmallBadRight1() {
         if (!rbad1_pressed) {
             playSound("incorrect.wav");
-            rbad1.setFill(Paint.valueOf("FFFF00"));
+            rbad1.setVisible(true);
             rbad1_pressed = true;
         } else {
-            rbad1.setFill(Paint.valueOf("111111"));
+            rbad1.setVisible(false);
             rbad1_pressed = false;
         }
     }
@@ -247,10 +253,10 @@ public class FirstStageController {
     public void SmallBadRight2() {
         if (!rbad2_pressed) {
             playSound("incorrect.wav");
-            rbad2.setFill(Paint.valueOf("FFFF00"));
+            rbad2.setVisible(true);
             rbad2_pressed = true;
         } else {
-            rbad2.setFill(Paint.valueOf("111111"));
+            rbad2.setVisible(false);
             rbad2_pressed = false;
         }
     }
@@ -259,10 +265,10 @@ public class FirstStageController {
     public void SmallBadRight3() {
         if (!rbad3_pressed) {
             playSound("incorrect.wav");
-            rbad3.setFill(Paint.valueOf("FFFF00"));
+            rbad3.setVisible(true);
             rbad3_pressed = true;
         } else {
-            rbad3.setFill(Paint.valueOf("111111"));
+            rbad3.setVisible(false);
             rbad3_pressed = false;
         }
     }
@@ -282,6 +288,24 @@ public class FirstStageController {
             RevealFifthAnswer();
         } else if (k == KeyCode.DIGIT6) {
             RevealSixthAnswer();
+        } else if (k == KeyCode.Q) {
+            SmallBadLeft1();
+        } else if (k == KeyCode.A) {
+            SmallBadLeft2();
+        } else if (k == KeyCode.Z) {
+            SmallBadLeft3();
+        } else if (k == KeyCode.S) {
+            BigBadLeft();
+        } else if (k == KeyCode.P) {
+            SmallBadRight1();
+        } else if (k == KeyCode.L) {
+            SmallBadRight2();
+        } else if (k == KeyCode.M || k == KeyCode.COMMA) {
+            SmallBadRight3();
+        } else if (k == KeyCode.K) {
+            BigBadRight();
+        } else if (k == KeyCode.J) {
+            playSound("joke1.wav");
         }
     }
 
@@ -320,7 +344,9 @@ public class FirstStageController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("firststage-view.fxml"));
         root = loader.load();
         GlobalVar.mainStage.close();
-        GlobalVar.mainStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        GlobalVar.mainStage.setScene(scene);
+        GlobalVar.currentScene = scene;
         GlobalVar.mainStage.setTitle("Runda " + numerals[GlobalVar.current_round - 1]);
         GlobalVar.mainStage.show();
     }

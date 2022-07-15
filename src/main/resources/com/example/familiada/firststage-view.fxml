@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" pickOnBounds="false" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.familiada.FirstStageController">
    <children>
@@ -13,90 +14,6 @@
             <Font name="Familiada Regular" size="13.0" />
          </font>
       </Button>
-      <TextArea fx:id="answer1" editable="false" layoutX="402.0" layoutY="109.0" onMouseClicked="#RevealFirstAnswer" prefHeight="91.0" prefWidth="1025.0" text=".......................................">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font></TextArea>
-      <TextArea fx:id="answer2" editable="false" layoutX="402.0" layoutY="223.0" onMouseClicked="#RevealSecondAnswer" prefHeight="91.0" prefWidth="1025.0" text=".......................................">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font></TextArea>
-      <TextArea fx:id="answer3" editable="false" layoutX="402.0" layoutY="337.0" onMouseClicked="#RevealThirdAnswer" prefHeight="91.0" prefWidth="1025.0" text=".......................................">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font></TextArea>
-      <TextArea fx:id="answer4" editable="false" layoutX="402.0" layoutY="462.0" onMouseClicked="#RevealFourthAnswer" prefHeight="91.0" prefWidth="1025.0" text=".......................................">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font></TextArea>
-      <TextArea fx:id="answer5" editable="false" layoutX="402.0" layoutY="586.0" onMouseClicked="#RevealFifthAnswer" prefHeight="91.0" prefWidth="1025.0" text=".......................................">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font></TextArea>
-      <TextArea fx:id="answer6" editable="false" layoutX="402.0" layoutY="704.0" onMouseClicked="#RevealSixthAnswer" prefHeight="91.0" prefWidth="1025.0" text=".......................................">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font></TextArea>
-      <TextArea fx:id="number1" editable="false" layoutX="226.0" layoutY="108.0" prefHeight="101.0" prefWidth="93.0" text="1">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="number2" editable="false" layoutX="225.0" layoutY="215.0" prefHeight="101.0" prefWidth="93.0" text="2">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="number3" editable="false" layoutX="225.0" layoutY="330.0" prefHeight="101.0" prefWidth="93.0" text="3">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="number4" editable="false" layoutX="228.0" layoutY="457.0" prefHeight="101.0" prefWidth="93.0" text="4">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="number5" editable="false" layoutX="226.0" layoutY="579.0" prefHeight="101.0" prefWidth="93.0" text="5">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="number6" editable="false" layoutX="226.0" layoutY="699.0" prefHeight="101.0" prefWidth="93.0" text="6">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="points1" editable="false" layoutX="1460.0" layoutY="104.0" prefHeight="101.0" prefWidth="93.0" text="--">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="points2" editable="false" layoutX="1459.0" layoutY="211.0" prefHeight="101.0" prefWidth="93.0" text="--">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="points3" editable="false" layoutX="1459.0" layoutY="326.0" prefHeight="101.0" prefWidth="93.0" text="--">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="points4" editable="false" layoutX="1462.0" layoutY="453.0" prefHeight="101.0" prefWidth="93.0" text="--">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="points5" editable="false" layoutX="1460.0" layoutY="575.0" prefHeight="101.0" prefWidth="93.0" text="--">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
-      <TextArea fx:id="points6" editable="false" layoutX="1460.0" layoutY="695.0" prefHeight="101.0" prefWidth="93.0" text="--">
-         <font>
-            <Font name="Familiada Regular" size="49.0" />
-         </font>
-      </TextArea>
       <TextArea editable="false" layoutX="1189.0" layoutY="914.0" prefHeight="77.0" prefWidth="211.0" text="SUMA">
          <font>
             <Font name="Familiada Regular" size="49.0" />
@@ -107,14 +24,14 @@
             <Font name="Familiada Regular" size="49.0" />
          </font>
       </TextArea>
-      <Ellipse fx:id="lbad1" fill="#111111" layoutX="108.0" layoutY="210.0" onMouseClicked="#SmallBadLeft1" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
-      <Ellipse fx:id="lbad2" fill="#111111" layoutX="108.0" layoutY="495.0" onMouseClicked="#SmallBadLeft2" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
-      <Ellipse fx:id="lbad3" fill="#111111" layoutX="108.0" layoutY="775.0" onMouseClicked="#SmallBadLeft3" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
-      <Ellipse fx:id="rbad1" fill="#111111" layoutX="1762.0" layoutY="207.0" onMouseClicked="#SmallBadRight1" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
-      <Ellipse fx:id="rbad2" fill="#111111" layoutX="1770.0" layoutY="470.0" onMouseClicked="#SmallBadRight2" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
-      <Ellipse fx:id="rbad3" fill="#111111" layoutX="1766.0" layoutY="739.0" onMouseClicked="#SmallBadRight3" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
-      <Ellipse fx:id="lbigbad" fill="#111111" layoutX="110.0" layoutY="474.0" onMouseClicked="#BigBadLeft" radiusX="40.0" radiusY="321.0" stroke="BLACK" strokeType="INSIDE" />
-      <Ellipse fx:id="rbigbad" fill="#111111" layoutX="1765.0" layoutY="466.0" onMouseClicked="#BigBadRight" radiusX="41.0" radiusY="321.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="lbad1" fill="YELLOW" layoutX="108.0" layoutY="210.0" onMouseClicked="#SmallBadLeft1" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="lbad2" fill="YELLOW" layoutX="108.0" layoutY="495.0" onMouseClicked="#SmallBadLeft2" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="lbad3" fill="YELLOW" layoutX="108.0" layoutY="775.0" onMouseClicked="#SmallBadLeft3" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="rbad1" fill="YELLOW" layoutX="1762.0" layoutY="207.0" onMouseClicked="#SmallBadRight1" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="rbad2" fill="YELLOW" layoutX="1770.0" layoutY="470.0" onMouseClicked="#SmallBadRight2" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="rbad3" fill="YELLOW" layoutX="1766.0" layoutY="739.0" onMouseClicked="#SmallBadRight3" radiusX="65.0" radiusY="121.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="lbigbad" fill="YELLOW" layoutX="110.0" layoutY="474.0" onMouseClicked="#BigBadLeft" radiusX="40.0" radiusY="321.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fx:id="rbigbad" fill="YELLOW" layoutX="1765.0" layoutY="466.0" onMouseClicked="#BigBadRight" radiusX="41.0" radiusY="321.0" stroke="BLACK" strokeType="INSIDE" />
       <TextArea fx:id="total_points1" editable="false" layoutX="23.0" layoutY="915.0" prefHeight="110.0" prefWidth="103.0" promptText="left_points" text="0">
          <font>
             <Font name="Familiada Regular" size="49.0" />
@@ -135,5 +52,95 @@
             <Font name="Familiada Regular" size="13.0" />
          </font>
       </Button>
+      <Text fx:id="ans1" fill="YELLOW" layoutX="418.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".......................................">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="ans2" fill="YELLOW" layoutX="445.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".......................................">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="ans3" fill="YELLOW" layoutX="446.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".......................................">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="ans4" fill="YELLOW" layoutX="418.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".......................................">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="ans5" fill="YELLOW" layoutX="449.0" layoutY="695.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".......................................">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="ans6" fill="YELLOW" layoutX="436.0" layoutY="801.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".......................................">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="no1" fill="YELLOW" layoutX="288.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="no2" fill="YELLOW" layoutX="286.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="no3" fill="YELLOW" layoutX="286.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="no4" fill="YELLOW" layoutX="288.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="no5" fill="YELLOW" layoutX="288.0" layoutY="695.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="no6" fill="YELLOW" layoutX="288.0" layoutY="809.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="pts1" fill="YELLOW" layoutX="1491.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="pts2" fill="YELLOW" layoutX="1491.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="pts3" fill="YELLOW" layoutX="1497.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="pts4" fill="YELLOW" layoutX="1491.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="pts5" fill="YELLOW" layoutX="1491.0" layoutY="688.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
+      <Text fx:id="pts6" fill="YELLOW" layoutX="1491.0" layoutY="809.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--">
+         <font>
+            <Font name="Familiada Regular" size="49.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

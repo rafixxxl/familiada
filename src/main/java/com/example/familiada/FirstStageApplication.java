@@ -23,6 +23,7 @@ public class FirstStageApplication extends Application {
         GlobalVar.current_active_question = new ActiveQuestion(q, GlobalVar.current_session, GlobalVar.current_round);
         FXMLLoader fxmlLoader = new FXMLLoader(FirstStageApplication.class.getResource("firststage-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
+        GlobalVar.currentScene = scene;
         System.out.println("jest runda " + GlobalVar.current_round);
         stage.setTitle("Runda pierwsza");
         stage.setScene(scene);

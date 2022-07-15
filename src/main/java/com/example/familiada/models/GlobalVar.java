@@ -1,5 +1,6 @@
 package com.example.familiada.models;
 
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GlobalVar {
@@ -7,4 +8,5 @@ public class GlobalVar {
     public static Session current_session;
     public static ActiveQuestion current_active_question;
     public static Stage mainStage;
+    public static Scene currentScene;
 }
