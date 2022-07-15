@@ -43,19 +43,19 @@ public class FirstStageApplication extends Application {
                 new int[] {31, 25, 13, 10, 6});
 
         s.addQuestion("Najbardziej obserwowane osoby na Instagramie",
-                new String[] {"@CRISTIANO", "@KYLIEJENNER", "@LEOMESSI", "@SELENAGOMEZ", "@THEROCK", "@KIMKARDASHIAN"},
+                new String[] {"CRISTIANO", "KYLIEJENNER", "LEOMESSI", "SELENAGOMEZ", "THEROCK", "KIMKARDASHIAN"},
                 new int[] {26, 22, 18, 14, 10, 6});
 
         s.addQuestion("Zwierzęta hodowlane, których jest najwięcej",
                 new String[] {"KURCZAKI", "BYDŁO", "OWCE", "KACZKI", "KOZY", "TRZODA CHLEWNA"},
                 new int[] {26, 22, 18, 14, 10, 6});
 
-        s.addQuestion("Najczęstsze nazwiska Polaków",
-                new String[] {"NOWAK", "KOWALSK*", "WIŚNIEWSK*"},
-                new int[] {32, 30, 25});
-
         s.addQuestion("Największe sieci sklepów spożywczych w Polsce",
                 new String[] {"ABC", "ŻABKA", "LEWIATAN", "BIEDRONKA"},
-                new int[] {28, 26, 25, 18});
+                new int[] {34, 28, 22, 16});
+
+        s.addQuestion("Najczęstsze nazwiska Polaków",
+                new String[] {"NOWAK", "KOWALSK*", "WIŚNIEWSK*"},
+                new int[] {32, 30, 28});
     }
 }

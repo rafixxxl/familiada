@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -30,7 +29,6 @@ public class FirstStageController {
     public Text pts1, pts2, pts3, pts4, pts5, pts6;
     public Text total_pts, total_pts1, total_pts2;
     public ImageView lb1, lb2, lb3, rb1, rb2, rb3, lb, rb;
-    public Button left_wins, right_wins;
 
     int[] mult_coeffs = new int[] {1, 1, 1, 2, 3, 3, 3, 3};
     String[] numerals = new String[] {"pierwsza", "druga", "trzecia", "czwarta", "piąta", "szósta", "siódma", "ósma"};
@@ -40,7 +38,7 @@ public class FirstStageController {
     @FXML
     public void initialize() {
         if (GlobalVar.current_round != 1) playSound("start_round.wav");
-        // else playSound("intro.wav"); // odkomentuj jak cie przestanie wkurzac
+        else playSound("intro.wav"); // odkomentuj jak cie przestanie wkurzac
         end_of_round_pressed = false;
         lbad1_pressed = lbad2_pressed = lbad3_pressed = lbigbad_pressed = false;
         rbad1_pressed = rbad2_pressed = rbad3_pressed = rbigbad_pressed = false;
