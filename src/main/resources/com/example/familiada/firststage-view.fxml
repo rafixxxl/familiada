@@ -19,21 +19,6 @@
             <Image url="@../../../bigbad.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="right_wins" layoutX="597.0" layoutY="943.0" mnemonicParsing="false" onAction="#GoToNextRoundRight" prefHeight="64.0" prefWidth="202.0" text="&lt;">
-         <font>
-            <Font name="Familiada Regular" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="left_wins" layoutX="375.0" layoutY="943.0" mnemonicParsing="false" onAction="#GoToNextRoundLeft" prefHeight="64.0" prefWidth="202.0" text="&gt;">
-         <font>
-            <Font name="Familiada Regular" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="next_round" layoutX="814.0" layoutY="943.0" mnemonicParsing="false" onAction="#GoToNextRound" prefHeight="64.0" prefWidth="202.0" text="NEXT ROUND">
-         <font>
-            <Font name="Familiada Regular" size="13.0" />
-         </font>
-      </Button>
       <Text fx:id="ans1" fill="#99b401" layoutX="407.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="……………………………………">
          <font>
             <Font name="Familiada Regular" size="70.0" />
@@ -134,12 +119,12 @@
             <Font name="Familiada Regular" size="70.0" />
          </font>
       </Text>
-      <Text fx:id="total_pts1" fill="#99b401" layoutX="80.0" layoutY="1001.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+      <Text fx:id="total_pts1" fill="#99b401" layoutX="74.0" layoutY="1001.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
          <font>
             <Font name="Familiada Regular" size="70.0" />
          </font>
       </Text>
-      <Text fx:id="total_pts2" fill="#99b401" layoutX="1783.0" layoutY="1001.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+      <Text fx:id="total_pts2" fill="#99b401" layoutX="1734.0" layoutY="1001.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
          <font>
             <Font name="Familiada Regular" size="70.0" />
          </font>
@@ -174,5 +159,6 @@
             <Image url="@../../../smallbad.jpg" />
          </image>
       </ImageView>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#GoToNextRound" prefHeight="0.0" prefWidth="0.0" text="next_round" />
    </children>
 </AnchorPane>

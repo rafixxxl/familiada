@@ -3,10 +3,8 @@ package com.example.familiada;
 import com.example.familiada.models.ActiveQuestion;
 import com.example.familiada.models.Answer;
 import com.example.familiada.models.GlobalVar;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -271,7 +269,7 @@ public class FirstStageController {
     }
 
     @FXML
-    private void keyPressed(KeyEvent keyEvent) {
+    private void keyPressed(KeyEvent keyEvent) throws IOException {
         KeyCode k = keyEvent.getCode();
         if (k == KeyCode.DIGIT1) {
             RevealFirstAnswer();
@@ -303,6 +301,12 @@ public class FirstStageController {
             BigBadRight();
         } else if (k == KeyCode.J) {
             playSound("joke1.wav");
+        } else if (k == KeyCode.V) {
+            GoToNextRoundLeft();
+        } else if (k == KeyCode.N) {
+            GoToNextRoundRight();
+        } else if (k == KeyCode.B || k == KeyCode.SPACE) {
+            GoToNextRound();
         }
     }
 
@@ -327,11 +331,11 @@ public class FirstStageController {
     }
 
     @FXML
-    private void GoToNextRound(ActionEvent event) throws IOException {
+    private void GoToNextRound() throws IOException {
         if (!end_of_round_pressed) return;
         if (GlobalVar.current_session.getPoints(1) >= 300 || GlobalVar.current_session.getPoints(2) >= 300) {
             System.out.println("To the final!");
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage = GlobalVar.mainStage;
             stage.close();  // TODO: przejście do rundy finałowej
             return;
         }
