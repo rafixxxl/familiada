@@ -10,10 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -31,10 +30,8 @@ public class FirstStageController {
     public Text ans1, ans2, ans3, ans4, ans5, ans6;
     public Text no1, no2, no3, no4, no5, no6;
     public Text pts1, pts2, pts3, pts4, pts5, pts6;
-    public TextArea total_points;
-
-    public Shape lbad1, lbad2, lbad3, lbigbad, rbad1, rbad2, rbad3, rbigbad;
-    public TextArea total_points1, total_points2;
+    public Text total_pts, total_pts1, total_pts2;
+    public ImageView lb1, lb2, lb3, rb1, rb2, rb3, lb, rb;
     public Button left_wins, right_wins;
 
     int[] mult_coeffs = new int[] {1, 1, 1, 2, 3, 3, 3, 3};
@@ -49,9 +46,9 @@ public class FirstStageController {
         end_of_round_pressed = false;
         lbad1_pressed = lbad2_pressed = lbad3_pressed = lbigbad_pressed = false;
         rbad1_pressed = rbad2_pressed = rbad3_pressed = rbigbad_pressed = false;
-        total_points1.setText(Integer.toString(GlobalVar.current_session.getPoints(1)));
+        total_pts1.setText(Integer.toString(GlobalVar.current_session.getPoints(1)));
         System.out.println(GlobalVar.current_session.getPoints(1));
-        total_points2.setText(Integer.toString(GlobalVar.current_session.getPoints(2)));
+        total_pts2.setText(Integer.toString(GlobalVar.current_session.getPoints(2)));
 
         // hiding unnecessary elements
         if (GlobalVar.current_active_question.getQuestion().getNumber_of_answers() < 6) {
@@ -74,14 +71,14 @@ public class FirstStageController {
             pts3.setVisible(false);
             no3.setVisible(false);
         }
-        lbigbad.setVisible(false);
-        lbad1.setVisible(false);
-        lbad2.setVisible(false);
-        lbad3.setVisible(false);
-        rbigbad.setVisible(false);
-        rbad1.setVisible(false);
-        rbad2.setVisible(false);
-        rbad3.setVisible(false);
+        lb.setVisible(false);
+        lb1.setVisible(false);
+        lb2.setVisible(false);
+        lb3.setVisible(false);
+        rb.setVisible(false);
+        rb1.setVisible(false);
+        rb2.setVisible(false);
+        rb3.setVisible(false);
     }
 
     @FXML
@@ -94,7 +91,7 @@ public class FirstStageController {
         pts1.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
+            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
         }
         playSound("correct.wav");
     }
@@ -109,7 +106,7 @@ public class FirstStageController {
         pts2.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
+            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
         }
         playSound("correct.wav");
     }
@@ -124,7 +121,7 @@ public class FirstStageController {
         pts3.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
+            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
         }
         playSound("correct.wav");
     }
@@ -140,7 +137,7 @@ public class FirstStageController {
         pts4.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
+            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
         }
         playSound("correct.wav");
     }
@@ -156,7 +153,7 @@ public class FirstStageController {
         pts5.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
+            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
         }
         playSound("correct.wav");
     }
@@ -172,7 +169,7 @@ public class FirstStageController {
         pts6.setText(Integer.toString(guessed_answer.getPoints()));
         if (!end_of_round_pressed) {
             GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_points.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
+            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
         }
         playSound("correct.wav");
     }
@@ -181,10 +178,10 @@ public class FirstStageController {
     public void BigBadLeft() {
         if (!lbigbad_pressed) {
             playSound("incorrect.wav");
-            lbigbad.setVisible(true);
+            lb.setVisible(true);
             lbigbad_pressed = true;
         } else {
-            lbigbad.setVisible(false);
+            lb.setVisible(false);
             lbigbad_pressed = false;
         }
     }
@@ -193,10 +190,10 @@ public class FirstStageController {
     public void SmallBadLeft1() {
         if (!lbad1_pressed) {
             playSound("incorrect.wav");
-            lbad1.setVisible(true);
+            lb1.setVisible(true);
             lbad1_pressed = true;
         } else {
-            lbad1.setVisible(false);
+            lb1.setVisible(false);
             lbad1_pressed = false;
         }
     }
@@ -205,10 +202,10 @@ public class FirstStageController {
     public void SmallBadLeft2() {
         if (!lbad2_pressed) {
             playSound("incorrect.wav");
-            lbad2.setVisible(true);
+            lb2.setVisible(true);
             lbad2_pressed = true;
         } else {
-            lbad2.setVisible(false);
+            lb2.setVisible(false);
             lbad2_pressed = false;
         }
     }
@@ -217,10 +214,10 @@ public class FirstStageController {
     public void SmallBadLeft3() {
         if (!lbad3_pressed) {
             playSound("incorrect.wav");
-            lbad3.setVisible(true);
+            lb3.setVisible(true);
             lbad3_pressed = true;
         } else {
-            lbad3.setVisible(false);
+            lb3.setVisible(false);
             lbad3_pressed = false;
         }
     }
@@ -229,10 +226,10 @@ public class FirstStageController {
     public void BigBadRight() {
         if (!rbigbad_pressed) {
             playSound("incorrect.wav");
-            rbigbad.setVisible(true);
+            rb.setVisible(true);
             rbigbad_pressed = true;
         } else {
-            rbigbad.setVisible(false);
+            rb.setVisible(false);
             rbigbad_pressed = false;
         }
     }
@@ -241,10 +238,10 @@ public class FirstStageController {
     public void SmallBadRight1() {
         if (!rbad1_pressed) {
             playSound("incorrect.wav");
-            rbad1.setVisible(true);
+            rb1.setVisible(true);
             rbad1_pressed = true;
         } else {
-            rbad1.setVisible(false);
+            rb1.setVisible(false);
             rbad1_pressed = false;
         }
     }
@@ -253,10 +250,10 @@ public class FirstStageController {
     public void SmallBadRight2() {
         if (!rbad2_pressed) {
             playSound("incorrect.wav");
-            rbad2.setVisible(true);
+            rb2.setVisible(true);
             rbad2_pressed = true;
         } else {
-            rbad2.setVisible(false);
+            rb2.setVisible(false);
             rbad2_pressed = false;
         }
     }
@@ -265,10 +262,10 @@ public class FirstStageController {
     public void SmallBadRight3() {
         if (!rbad3_pressed) {
             playSound("incorrect.wav");
-            rbad3.setVisible(true);
+            rb3.setVisible(true);
             rbad3_pressed = true;
         } else {
-            rbad3.setVisible(false);
+            rb3.setVisible(false);
             rbad3_pressed = false;
         }
     }
@@ -315,7 +312,7 @@ public class FirstStageController {
         System.out.println("Left wins!");
         playSound("clapping.wav");
         GlobalVar.current_session.addPoints(1, GlobalVar.current_active_question.getSum() * mult_coeffs[GlobalVar.current_round - 1]);
-        total_points1.setText(Integer.toString(GlobalVar.current_session.getPoints(1)));
+        total_pts1.setText(Integer.toString(GlobalVar.current_session.getPoints(1)));
         end_of_round_pressed = true;
     }
 
@@ -325,12 +322,13 @@ public class FirstStageController {
         System.out.println("Right wins!");
         playSound("clapping.wav");
         GlobalVar.current_session.addPoints(2, GlobalVar.current_active_question.getSum() * mult_coeffs[GlobalVar.current_round - 1]);
-        total_points2.setText(Integer.toString(GlobalVar.current_session.getPoints(2)));
+        total_pts2.setText(Integer.toString(GlobalVar.current_session.getPoints(2)));
         end_of_round_pressed = true;
     }
 
     @FXML
     private void GoToNextRound(ActionEvent event) throws IOException {
+        if (!end_of_round_pressed) return;
         if (GlobalVar.current_session.getPoints(1) >= 300 || GlobalVar.current_session.getPoints(2) >= 300) {
             System.out.println("To the final!");
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
