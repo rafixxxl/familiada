@@ -9,7 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class FirstStageApplication extends Application {
 
@@ -30,32 +33,28 @@ public class FirstStageApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         GlobalVar.current_session = new Session();
-        addQuestions(GlobalVar.current_session);
-
+        addQuestions(GlobalVar.current_session, new File("src/main/resources/com/example/familiada/question_sets/qs03.txt"));
         launch();
     }
 
-    static void addQuestions(Session s) {
-        s.addQuestion("Najpopularniejsze telefony Polaków w 2022",
-                new String[] {"SAMSUNG", "XIAOMI", "REALME", "APPLE", "LENOVO/MOTOROLA"},
-                new int[] {31, 25, 13, 10, 6});
-
-        s.addQuestion("Najbardziej obserwowane osoby na Instagramie",
-                new String[] {"CRISTIANO", "KYLIEJENNER", "LEOMESSI", "SELENAGOMEZ", "THEROCK", "KIMKARDASHIAN"},
-                new int[] {26, 22, 18, 14, 10, 6});
-
-        s.addQuestion("Zwierzęta hodowlane, których jest najwięcej",
-                new String[] {"KURCZAKI", "BYDŁO", "OWCE", "KACZKI", "KOZY", "TRZODA CHLEWNA"},
-                new int[] {26, 22, 18, 14, 10, 6});
-
-        s.addQuestion("Największe sieci sklepów spożywczych w Polsce",
-                new String[] {"ABC", "ŻABKA", "LEWIATAN", "BIEDRONKA"},
-                new int[] {34, 28, 22, 16});
-
-        s.addQuestion("Najczęstsze nazwiska Polaków",
-                new String[] {"NOWAK", "KOWALSK*", "WIŚNIEWSK*"},
-                new int[] {32, 30, 28});
+    static void addQuestions(Session s, File file) throws IOException {
+        Scanner sc = new Scanner(file);
+        System.out.println(file.getCanonicalPath());
+        while (sc.hasNextLine()) {
+            String question = sc.nextLine();
+            String line = sc.nextLine();
+            if (sc.hasNextLine()) sc.nextLine();
+            String[] part = line.split(" *: *");
+            String[] answer = part[0].split(" *, *");
+            String[] points = part[1].split(" *, *");
+            if (answer.length != points.length) {
+                System.out.println("IMPORT ERROR!");
+                System.exit(0);
+            }
+            int[] points_int = Arrays.stream(points).mapToInt(Integer::parseInt).toArray();
+            s.addQuestion(question, answer, points_int);
+        }
     }
 }

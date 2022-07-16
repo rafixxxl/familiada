@@ -9,10 +9,10 @@
 
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" pickOnBounds="false" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.familiada.FirstStageController">
    <ImageView fx:id="lb" fitHeight="493.0" fitWidth="194.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../bigbad.jpg" />
+      <Image url="@images/bigbad.jpg" />
    </ImageView>
    <ImageView fx:id="rb" fitHeight="491.0" fitWidth="173.0" layoutX="1675.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../bigbad.jpg" />
+      <Image url="@images/bigbad.jpg" />
    </ImageView>
    <Text fx:id="ans1" fill="#99b401" layoutX="372.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="………………………………………">
       <font>
@@ -115,22 +115,22 @@
       </font>
    </Text>
    <ImageView fx:id="lb1" fitHeight="286.0" fitWidth="173.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../smallbad.jpg" />
+      <Image url="@images/smallbad.jpg" />
    </ImageView>
    <ImageView fx:id="lb2" fitHeight="286.0" fitWidth="173.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../smallbad.jpg" />
+      <Image url="@images/smallbad.jpg" />
    </ImageView>
    <ImageView fx:id="lb3" fitHeight="286.0" fitWidth="173.0" layoutY="718.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../smallbad.jpg" />
+      <Image url="@images/smallbad.jpg" />
    </ImageView>
    <ImageView fx:id="rb1" fitHeight="286.0" fitWidth="173.0" layoutX="1675.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../smallbad.jpg" />
+      <Image url="@images/smallbad.jpg" />
    </ImageView>
    <ImageView fx:id="rb2" fitHeight="286.0" fitWidth="173.0" layoutX="1675.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../smallbad.jpg" />
+      <Image url="@images/smallbad.jpg" />
    </ImageView>
    <ImageView fx:id="rb3" fitHeight="286.0" fitWidth="173.0" layoutX="1675.0" layoutY="718.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../smallbad.jpg" />
+      <Image url="@images/smallbad.jpg" />
    </ImageView>
    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#GoToNextRound" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: transparent;" text="next_round" />
    <Text fx:id="score" fill="#99b401" layoutX="372.0" layoutY="901.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0  -  0">
