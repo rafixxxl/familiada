@@ -27,7 +27,7 @@ public class FirstStageController {
     public Text ans1, ans2, ans3, ans4, ans5, ans6;
     public Text no1, no2, no3, no4, no5, no6;
     public Text pts1, pts2, pts3, pts4, pts5, pts6;
-    public Text total_pts, total_pts1, total_pts2;
+    public Text total_pts, sum_text, score;
     public ImageView lb1, lb2, lb3, rb1, rb2, rb3, lb, rb;
 
     int[] mult_coeffs = new int[] {1, 1, 1, 2, 3, 3, 3, 3};
@@ -38,13 +38,12 @@ public class FirstStageController {
     @FXML
     public void initialize() {
         if (GlobalVar.current_round != 1) playSound("start_round.wav");
-        else playSound("intro.wav"); // odkomentuj jak cie przestanie wkurzac
+        else playSound("intro.wav");
         end_of_round_pressed = false;
         lbad1_pressed = lbad2_pressed = lbad3_pressed = lbigbad_pressed = false;
         rbad1_pressed = rbad2_pressed = rbad3_pressed = rbigbad_pressed = false;
-        total_pts1.setText(Integer.toString(GlobalVar.current_session.getPoints(1)));
         System.out.println(GlobalVar.current_session.getPoints(1));
-        total_pts2.setText(Integer.toString(GlobalVar.current_session.getPoints(2)));
+        score.setText(GlobalVar.current_session.getPoints(1) + "  -  " + GlobalVar.current_session.getPoints(2));
 
         // hiding unnecessary elements
         if (GlobalVar.current_active_question.getQuestion().getNumber_of_answers() < 6) {
@@ -67,6 +66,7 @@ public class FirstStageController {
             pts3.setVisible(false);
             no3.setVisible(false);
         }
+
         lb.setVisible(false);
         lb1.setVisible(false);
         lb2.setVisible(false);
@@ -75,99 +75,40 @@ public class FirstStageController {
         rb1.setVisible(false);
         rb2.setVisible(false);
         rb3.setVisible(false);
+
+        sum_text.setY(sum_text.getY() - 103 * (6 - GlobalVar.current_active_question.getQuestion().getNumber_of_answers()));
+        total_pts.setY(total_pts.getY() - 103 * (6 - GlobalVar.current_active_question.getQuestion().getNumber_of_answers()));
+        score.setY(score.getY() - 103 * (6 - GlobalVar.current_active_question.getQuestion().getNumber_of_answers()));
     }
 
     @FXML
     public void RevealFirstAnswer() {
-        if (GlobalVar.current_active_question.guessed[0]) return;
-        GlobalVar.current_active_question.guessed[0] = true;
-        System.out.println("Revealing first answer");
-        Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(0);
-        ans1.setText(guessed_answer.getAnswer());
-        pts1.setText(Integer.toString(guessed_answer.getPoints()));
-        if (!end_of_round_pressed) {
-            GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
-        }
-        playSound("correct.wav");
+        revealAnswer(1, ans1, pts1);
     }
 
     @FXML
     public void RevealSecondAnswer() {
-        if (GlobalVar.current_active_question.guessed[1]) return;
-        GlobalVar.current_active_question.guessed[1] = true;
-        System.out.println("Revealing second answer");
-        Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(1);
-        ans2.setText(guessed_answer.getAnswer());
-        pts2.setText(Integer.toString(guessed_answer.getPoints()));
-        if (!end_of_round_pressed) {
-            GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
-        }
-        playSound("correct.wav");
+        revealAnswer(2, ans2, pts2);
     }
 
     @FXML
     public void RevealThirdAnswer() {
-        if (GlobalVar.current_active_question.guessed[2]) return;
-        GlobalVar.current_active_question.guessed[2] = true;
-        System.out.println("Revealing third answer");
-        Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(2);
-        ans3.setText(guessed_answer.getAnswer());
-        pts3.setText(Integer.toString(guessed_answer.getPoints()));
-        if (!end_of_round_pressed) {
-            GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
-        }
-        playSound("correct.wav");
+        revealAnswer(3, ans3, pts3);
     }
 
     @FXML
     public void RevealFourthAnswer() {
-        if (GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getNumber_of_answers() < 4) return;
-        if (GlobalVar.current_active_question.guessed[3]) return;
-        GlobalVar.current_active_question.guessed[3] = true;
-        System.out.println("Revealing fourth answer");
-        Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(3);
-        ans4.setText(guessed_answer.getAnswer());
-        pts4.setText(Integer.toString(guessed_answer.getPoints()));
-        if (!end_of_round_pressed) {
-            GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
-        }
-        playSound("correct.wav");
+        revealAnswer(4, ans4, pts4);
     }
 
     @FXML
     public void RevealFifthAnswer() {
-        if (GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getNumber_of_answers() < 5) return;
-        if (GlobalVar.current_active_question.guessed[4]) return;
-        GlobalVar.current_active_question.guessed[4] = true;
-        System.out.println("Revealing fifth answer");
-        Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(4);
-        ans5.setText(guessed_answer.getAnswer());
-        pts5.setText(Integer.toString(guessed_answer.getPoints()));
-        if (!end_of_round_pressed) {
-            GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
-        }
-        playSound("correct.wav");
+        revealAnswer(5, ans5, pts5);
     }
 
     @FXML
     public void RevealSixthAnswer() {
-        if (GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getNumber_of_answers() < 6) return;
-        if (GlobalVar.current_active_question.guessed[5]) return;
-        GlobalVar.current_active_question.guessed[5] = true;
-        System.out.println("Revealing sixth answer");
-        Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(5);
-        ans6.setText(guessed_answer.getAnswer());
-        pts6.setText(Integer.toString(guessed_answer.getPoints()));
-        if (!end_of_round_pressed) {
-            GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
-            total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
-        }
-        playSound("correct.wav");
+        revealAnswer(6, ans6, pts6);
     }
 
     @FXML
@@ -303,29 +244,40 @@ public class FirstStageController {
             GoToNextRoundLeft();
         } else if (k == KeyCode.N) {
             GoToNextRoundRight();
-        } else if (k == KeyCode.B || k == KeyCode.SPACE) {
+        } else if (k == KeyCode.SPACE) {
             GoToNextRound();
         }
     }
 
     @FXML
     public void GoToNextRoundLeft() {
-        if (end_of_round_pressed) return;
-        System.out.println("Left wins!");
-        playSound("clapping.wav");
-        GlobalVar.current_session.addPoints(1, GlobalVar.current_active_question.getSum() * mult_coeffs[GlobalVar.current_round - 1]);
-        total_pts1.setText(Integer.toString(GlobalVar.current_session.getPoints(1)));
-        end_of_round_pressed = true;
+        if (end_of_round_pressed) {
+            end_of_round_pressed = false;
+            GlobalVar.current_session.addPoints(1, -GlobalVar.current_active_question.getSum() * mult_coeffs[GlobalVar.current_round - 1]);
+            score.setText(GlobalVar.current_session.getPoints(1) + "  -  " + GlobalVar.current_session.getPoints(2));
+        }
+        else {
+            System.out.println("Left wins!");
+            playSound("clapping.wav");
+            GlobalVar.current_session.addPoints(1, GlobalVar.current_active_question.getSum() * mult_coeffs[GlobalVar.current_round - 1]);
+            score.setText(GlobalVar.current_session.getPoints(1) + "  -  " + GlobalVar.current_session.getPoints(2));
+            end_of_round_pressed = true;
+        }
     }
 
     @FXML
     public void GoToNextRoundRight() {
-        if (end_of_round_pressed) return;
-        System.out.println("Right wins!");
-        playSound("clapping.wav");
-        GlobalVar.current_session.addPoints(2, GlobalVar.current_active_question.getSum() * mult_coeffs[GlobalVar.current_round - 1]);
-        total_pts2.setText(Integer.toString(GlobalVar.current_session.getPoints(2)));
-        end_of_round_pressed = true;
+        if (end_of_round_pressed) {
+            end_of_round_pressed = false;
+            GlobalVar.current_session.addPoints(2, -GlobalVar.current_active_question.getSum() * mult_coeffs[GlobalVar.current_round - 1]);
+            score.setText(GlobalVar.current_session.getPoints(1) + "  -  " + GlobalVar.current_session.getPoints(2));
+        } else {
+            System.out.println("Right wins!");
+            playSound("clapping.wav");
+            GlobalVar.current_session.addPoints(2, GlobalVar.current_active_question.getSum() * mult_coeffs[GlobalVar.current_round - 1]);
+            score.setText(GlobalVar.current_session.getPoints(1) + "  -  " + GlobalVar.current_session.getPoints(2));
+            end_of_round_pressed = true;
+        }
     }
 
     @FXML
@@ -361,6 +313,31 @@ public class FirstStageController {
             clip.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void revealAnswer(int no, Text ans, Text pts) {
+        Answer guessed_answer = GlobalVar.current_session.getQuestions().get(GlobalVar.current_round - 1).getAnswers().get(no - 1);
+        if (GlobalVar.current_active_question.guessed[no - 1]) {
+            if (end_of_round_pressed) return;
+            GlobalVar.current_active_question.guessed[no - 1] = false;
+            ans.setText("………………………………………");
+            pts.setText("--");
+            if (!end_of_round_pressed) {
+                GlobalVar.current_active_question.addToSum(-guessed_answer.getPoints());
+                total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
+            }
+        }
+        else {
+            GlobalVar.current_active_question.guessed[no - 1] = true;
+            System.out.println("Revealing first answer");
+            ans.setText(guessed_answer.getAnswer());
+            pts.setText(Integer.toString(guessed_answer.getPoints()));
+            if (!end_of_round_pressed) {
+                GlobalVar.current_active_question.addToSum(guessed_answer.getPoints());
+                total_pts.setText(Integer.toString(GlobalVar.current_active_question.getSum()));
+            }
+            playSound("correct.wav");
         }
     }
 }
